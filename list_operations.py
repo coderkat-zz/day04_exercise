@@ -118,6 +118,7 @@ def custom_append(input_list, value):
     input_list += [value]
 
 
+
 #List slicing (some_list[start:end])
 #List slicing assignment (some_list[start:end] = another_list)
 
@@ -169,36 +170,49 @@ def custom_count(input_list, value):
 
 def custom_reverse(input_list):
     """custom_reverse(input_list) imitates input_list.reverse()"""
-    new_list = []
+    #new_list = []
  #   new_pos = -1
         # length of new_list must == length of old_list
-    while custom_len(input_list) > 0:
-        popped = custom_pop(input_list)
+    length = custom_len(input_list)
+    pos = 0
+    for i in range(length):
+        pop = custom_pop(input_list)
  #       print popped
-        custom_append(new_list, popped)
+        custom_insert(input_list, pos, pop)
+        pos +=1
   #      print new_list
-#        for thing in input_list:
- #           new_value = input_list[new_pos]
-    #        print new_value
-  #          new_list += [new_value]
-        #        print new_list
-   #         new_pos = new_pos - 1
-        #        print new_pos
-    input_list = new_list 
     return input_list
-
 #input_list = [1, 2, 3, 4, 5, 6, 7, 8]
 #print custom_reverse(input_list)
 
-input_list = [1, 2, 3, 4, 5]
-custom_reverse(input_list)
+#input_list = [1, 2, 3, 4, 5]
+#custom_reverse(input_list)
 
 def custom_contains(input_list, value):
     """custom_contains(input_list, value) imitates (value in input_list)"""
-    pass
+    for item in input_list:
+        if item == value:
+            return True
+            break
+        else:
+            continue
+    return False
 
 def custom_equality(some_list, another_list):
     """custom_equality(some_list, another_list) imitates
     (some_list == another_list)
     """
-    pass
+    pos = 0
+    if custom_len(some_list) != custom_len(another_list):
+        return False
+    else:
+        while True:
+            for item in some_list:
+                if item == another_list[pos]:
+                    pos += 1
+                    continue
+                else:
+                    return False
+                    break
+            return True
+
